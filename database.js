@@ -1,6 +1,19 @@
-const sqlite3 = require('sqlite3').verbose();
 
-const db = new sqlite3.Database('./meals.db', (err) => {
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+const fs = require('fs');
+
+const dataDir = process.env.NODE_ENV === 'production'
+    ? '/var/data'
+    : __dirname;
+
+if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true });
+}
+
+const dbPath = path.join(dataDir, 'meals.db');
+
+const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
         console.error('Database error:', err.message);
     } else {
