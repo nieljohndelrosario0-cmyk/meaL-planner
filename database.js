@@ -1,36 +1,24 @@
 
-const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
-const fs = require('fs');
+const { neon } = require('@neondatabase/serverless');
 
-const dataDir = process.env.NODE_ENV === 'production'
-    ? '/var/data'
-    : __dirname;
-
-if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
+if (!process.env.DATABASE_URL) {
+    throw new Error('DATABASE_URL is not configured');
 }
 
-const dbPath = path.join(dataDir, 'meals.db');
+const sql = neon(process.env.DATABASE_URL);
 
-const db = new sqlite3.Database(dbPath, (err) => {
-    if (err) {
-        console.error('Database error:', err.message);
-    } else {
-        console.log('Connected to Meal Planner Database!');
-    }
-});
-
-db.serialize(() => {
-    db.run(`
+async function initializeDatabase() {
+    await sql`
         CREATE TABLE IF NOT EXISTS meals (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id SERIAL PRIMARY KEY,
             name TEXT NOT NULL,
             category TEXT NOT NULL,
-            meal_date TEXT NOT NULL,
+            meal_date DATE NOT NULL,
             description TEXT
         )
-    `);
-});
+    `;
 
-module.exports = db;
+    console.log('Connected to Neon PostgreSQL!');
+}
+
+module.exports = { sql, initializeDatabase };
