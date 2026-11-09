@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>🍽️ Meal Planner</h1>
+            <p>Plan your meals and organize your daily food schedule.</p>
+        </header>
+
+        <section class="dashboard">
+            <div class="card">
+                <h3>Total Meals</h3>
+                <h2 id="totalMeals">0</h2>
+            </div>
+
+            <div class="card">
+                <h3>Breakfast</h3>
+                <h2 id="breakfastCount">0</h2>
+            </div>
+
+            <div class="card">
+                <h3>Lunch</h3>
+                <h2 id="lunchCount">0</h2>
+            </div>
+
+            <div class="card">
+                <h3>Dinner</h3>
+                <h2 id="dinnerCount">0</h2>
+            </div>
+        </section>
+
+        <section class="form-section">
+            <h2 id="formTitle">Add New Meal</h2>
+
+            <form id="mealForm">
+                <input type="hidden" id="mealId">
+
+                <label>Meal Name</label>
+                <input type="text" id="name"
+                    placeholder="Example: Chicken Adobo" required>
+
+                <label>Category</label>
+                <select id="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Snacks">Snacks</option>
+                </select>
+
+                <label>Meal Date</label>
+                <input type="date" id="meal_date" required>
+
+                <label>Description</label>
+                <textarea id="description"
+                    placeholder="Enter meal details"></textarea>
+
+                <button type="submit" id="submitBtn">
+                    Add Meal
+                </button>
+
+                <button type="button" id="cancelBtn"
+                    class="cancel-btn" hidden>
+                    Cancel Edit
+                </button>
+            </form>
+        </section>
+
+        <section class="meal-section">
+            <h2>My Meal Schedule</h2>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Meal Name</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="mealList">
+                        <tr>
+                            <td colspan="5">Loading meals...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

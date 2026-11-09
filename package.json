@@ -1,0 +1,20 @@
+{
+  "name": "meal-planner",
+  "version": "1.0.0",
+  "description": "Simple Meal Planner Dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.22.3",
+    "sqlite3": "^5.1.7"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "allowScripts": {
+    "sqlite3@5.1.7": true
+  }
+}
