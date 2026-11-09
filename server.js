@@ -1,11 +1,13 @@
+
 const express = require('express');
+const path = require('path');
 const db = require('./database');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // GET all meals
 app.get('/api/meals', (req, res) => {
@@ -64,6 +66,6 @@ app.delete('/api/meals/:id', (req, res) => {
 });
 
 // START SERVER
-app.listen(PORT, () => {
-    console.log('Meal Planner running at http://localhost:' + PORT);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Meal Planner running on port ${PORT}`);
 });
