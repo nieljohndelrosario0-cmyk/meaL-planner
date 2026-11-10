@@ -1,7 +1,5 @@
 
-// =====================================
-// MEAL PLANNER DASHBOARD
-// =====================================
+
 
 // Get HTML elements
 const mealForm = document.getElementById('mealForm');
@@ -17,9 +15,7 @@ const submitBtn = document.getElementById('submitBtn');
 const cancelBtn = document.getElementById('cancelBtn');
 
 
-// =====================================
-// LOAD ALL MEALS
-// =====================================
+
 
 async function loadMeals() {
     try {
@@ -91,9 +87,6 @@ async function loadMeals() {
 }
 
 
-// =====================================
-// UPDATE DASHBOARD COUNTS
-// =====================================
 
 function updateDashboard(meals) {
 
@@ -111,9 +104,7 @@ function updateDashboard(meals) {
 }
 
 
-// =====================================
-// ADD OR UPDATE MEAL
-// =====================================
+
 
 mealForm.addEventListener('submit', async function(event) {
 
@@ -184,9 +175,7 @@ mealForm.addEventListener('submit', async function(event) {
 });
 
 
-// =====================================
-// EDIT MEAL
-// =====================================
+
 
 function editMeal(meal) {
 
@@ -210,9 +199,7 @@ function editMeal(meal) {
 }
 
 
-// =====================================
-// CANCEL EDITING
-// =====================================
+
 
 cancelBtn.addEventListener('click', function() {
 
@@ -229,9 +216,7 @@ cancelBtn.addEventListener('click', function() {
 });
 
 
-// =====================================
-// DELETE MEAL
-// =====================================
+
 
 async function deleteMeal(id) {
 
@@ -265,8 +250,6 @@ async function deleteMeal(id) {
 }
 
 
-// =====================================
-// START APPLICATION
-// =====================================
+
 
 loadMeals();
